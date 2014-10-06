@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Tutorial by bethetaedu</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Tutorial</h1>
+        <h2>tutorial</h2>
+        <a href="https://github.com/bethetaedu/tutorial" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h2>
+<a name="advanced-right" class="anchor" href="#advanced-right"><span class="octicon octicon-link"></span></a>Advanced RIGHT</h2>
+
+<p>In this page, you can learn advanced RIGHT features with few example codes.</p>
+
+<h3>
+<a name="1-drawing-multiple-graphs" class="anchor" href="#1-drawing-multiple-graphs"><span class="octicon octicon-link"></span></a>1. Drawing multiple graphs</h3>
+
+<p>You can draw multiple graphs in one page very easily. If you want to draw three grahps, just type like below :</p>
+
+<div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">({</span>plot<span class="p">(</span>price <span class="o">~</span> color<span class="p">,</span> subArray<span class="p">,</span> type <span class="o">=</span> <span class="s">"p"</span><span class="p">)</span>
+        hist<span class="p">(</span>color<span class="p">,</span> subArray<span class="p">)</span>
+        pie<span class="p">(</span>color<span class="p">,</span> subArray<span class="p">)})</span>
+</pre></div>
+
+<p>It will show three interactive graphs like below. From left, <em>plot</em> draw a scatter graph, <em>hist</em> draws a bar graph, and finally <em>pie</em> draws a pie graph.
+<img src="http://thepotter.woobi.co.kr/img/advanced01.PNG" alt="">
+All graphs, of course, are interactively connected
+<img src="http://thepotter.woobi.co.kr/img/advanced02.PNG" alt=""></p>
+
+<h3>
+<a name="2-overlaying-graphs" class="anchor" href="#2-overlaying-graphs"><span class="octicon octicon-link"></span></a>2. Overlaying graphs</h3>
+
+<p>Multiple objects can be drawn in one container. To draw box-and-whisker and scatter plot type :</p>
+
+<div class="highlight highlight-R"><pre>   RIGHT<span class="p">({</span>boxplot<span class="p">(</span>price <span class="o">~</span> carat<span class="p">,</span> subArray<span class="p">)</span>
+          plot<span class="p">(</span>price <span class="o">~</span> carat<span class="p">,</span> subArray<span class="p">,</span> col <span class="o">=</span> <span class="s">'blue'</span><span class="p">,</span> type <span class="o">=</span> <span class="s">"p"</span><span class="p">)})</span>
+UNDER CONSTRUCTION UNDER CONSTRUCTION UNDER CONSTRUCTION
+</pre></div>
+
+<p>It will draw overlaid graphs in one axis.
+<img src="http://thepotter.woobi.co.kr/img/overlay.PNG" alt="">
+Here is a more complex example where a loess line is overlaid on a scatter plot:</p>
+
+<div class="highlight highlight-R"><pre><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<span class="kp">rm</span><span class="p">(</span><span class="kt">list</span> <span class="o">=</span> <span class="kp">ls</span><span class="p">())</span>
+
+<span class="kp">set.seed</span><span class="p">(</span><span class="m">123456</span><span class="p">)</span>
+
+subArray <span class="o">&lt;-</span> diamonds<span class="p">[</span><span class="kp">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="kp">nrow</span><span class="p">(</span>diamonds<span class="p">),</span> <span class="m">1000</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">),</span> <span class="p">]</span>
+
+fitObj <span class="o">&lt;-</span> loess<span class="p">(</span>price <span class="o">~</span> carat<span class="p">,</span> subArray<span class="p">)</span>
+xRange <span class="o">&lt;-</span> <span class="kp">range</span><span class="p">(</span>subArray<span class="o">$</span>carat<span class="p">)</span>
+fitArray <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>carat <span class="o">=</span> <span class="kp">seq</span><span class="p">(</span>xRange<span class="p">[</span><span class="m">1</span><span class="p">],</span> xRange<span class="p">[</span><span class="m">2</span><span class="p">],</span> length.out <span class="o">=</span> <span class="m">100</span><span class="p">))</span>
+fitArray<span class="o">$</span>price <span class="o">&lt;-</span> predict<span class="p">(</span>fitObj<span class="p">,</span> newdata <span class="o">=</span> fitArray<span class="p">)</span>
+
+RIGHT<span class="p">({</span>plot<span class="p">(</span>price <span class="o">~</span> carat<span class="p">,</span> subArray<span class="p">,</span> type <span class="o">=</span> <span class="s">"p"</span><span class="p">)</span>
+       lines<span class="p">(</span>price <span class="o">~</span> carat<span class="p">,</span> fitArray<span class="p">)})</span>
+</pre></div>
+
+<p><img src="http://thepotter.woobi.co.kr/img/advanced04.PNG" alt=""></p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/bethetaedu/tutorial/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/bethetaedu/tutorial/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/bethetaedu/tutorial"></a> is maintained by <a href="https://github.com/bethetaedu">bethetaedu</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
