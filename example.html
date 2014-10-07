@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <link rel="stylesheet" type="text/css" href="right.css"/>
+  <link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="example_theme.css"/>
+
+  <title>RIGHT: R Interactive Graphics via HTml Example</title>
+
+    <script src="http://righthelp.github.io/tutorial/kinetic-v5.0.1.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/common.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/structure.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/axis.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/color.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/callback.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/node_event.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/menu.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/array.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/dot.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/bar.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/box.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/line.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/pie.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/data_example.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+  <script>
+  var Theoph = createMainStructureE(Theoph);
+  var subDiamonds = createMainStructureE(subDiamonds);
+  </script>
+  <div class="navbar navbar-fixed-top" role="navigation">
+<div class="navbar-header">
+<div id="content">
+<script>
+makeSearchButton("searchBox1", Theoph);
+makeSearchButton("searchBox2", subDiamonds);
+
+</script>
+</div>
+</div>
+</div>
+
+  <div id="content">
+  <div class="row">
+<div class="col-md-12">
+<div id="content1" class="right-output">
+<div id="container1" oncontextmenu="return false;"></div></div>
+</div>
+</div>
+
+  <div class="row">
+<div class="col-md-6">
+<div id="content2" class="right-output">
+<div id="container2" oncontextmenu="return false;"></div></div>
+</div>
+
+  <div class="col-md-6">
+<div id="content3" class="right-output">
+<div id="container3" oncontextmenu="return false;"></div></div>
+</div>
+</div>
+
+  <div class="row">
+<div class="col-md-4">
+<div id="content4" class="right-output">
+<div id="container4" oncontextmenu="return false;"></div></div>
+</div>
+
+  <div class="col-md-4">
+<div id="content5" class="right-output">
+<div id="container5" oncontextmenu="return false;"></div></div>
+</div>
+
+  <div class="col-md-4">
+<div id="content6" class="right-output">
+<div id="container6" oncontextmenu="return false;"></div></div>
+</div>
+</div>
+
+  <div class="row">
+<div class="col-md-3">
+<div id="content7" class="right-output">
+<div id="container7" oncontextmenu="return false;"></div></div>
+</div>
+
+  <div class="col-md-3">
+<div id="content8" class="right-output">
+<div id="container8" oncontextmenu="return false;"></div></div>
+</div>
+
+  <div class="col-md-3">
+<div id="content9" class="right-output">
+<div id="container9" oncontextmenu="return false;"></div></div>
+</div>
+
+  <div class="col-md-3">
+<div id="content10" class="right-output">
+<div id="container10" oncontextmenu="return false;"></div></div>
+</div>
+</div>
+
+  </div>
+
+  <script>
+    
+    var axis1 = new Axis(1, Theoph, 'Time', 'conc', {legend: 'Subject'});
+    var point1 = new Dot(axis1, Theoph, 'Time', 'conc', {});
+    var axis2 = new Axis(2, Theoph, 'Wt', 'conc', {legend: 'Subject'});
+    var point2 = new Dot(axis2, Theoph, 'Wt', 'conc', {});
+    var histObj1 = new ddply(Theoph, ['Time', 'Subject'], {});
+    var axis3 = new Axis(3, histObj1, 'Time', 'frequency', {legend: 'Subject'});
+    var hist1 = new Bar(axis3, histObj1, 'Time', 'frequency', {});
+    var axis4 = new Axis(4, subDiamonds, 'clarity', 'price', {legend: 'color'});
+    var point3 = new Dot(axis4, subDiamonds, 'clarity', 'price', {});
+    var histObj2 = new ddply(subDiamonds, ['clarity'], {});
+    var axis5 = new Axis(5, histObj2, 'clarity', 'frequency', {});
+    var hist2 = new Bar(axis5, histObj2, 'clarity', 'frequency', {});
+    var pieObj1 = new ddply(subDiamonds, ['clarity'], {});
+    var axis6 = new Axis(6, pieObj1, 'clarity', 'frequency', {legend: 'clarity'});
+    var pie1 = new Pie(axis6, pieObj1, 'clarity', 'frequency', {});
+    var axis7 = new Axis(7, subDiamonds, 'cut', 'price', {});
+    var point4 = new Dot(axis7, subDiamonds, 'cut', 'price', {});
+    var histObj3 = new ddply(subDiamonds, ['cut'], {});
+    var axis8 = new Axis(8, histObj3, 'cut', 'frequency', {});
+    var hist3 = new Bar(axis8, histObj3, 'cut', 'frequency', {});
+    var pieObj2 = new ddply(subDiamonds, ['cut'], {});
+    var axis9 = new Axis(9, pieObj2, 'cut', 'frequency', {legend: 'cut'});
+    var pie2 = new Pie(axis9, pieObj2, 'cut', 'frequency', {});
+    var boxObj1 = new MakeBoxObj(subDiamonds, ['carat'], ['price'], {});
+    var axis10 = new Axis(10, boxObj1, 'carat', 'price', {});
+    var box1 = new Box(axis10, boxObj1, {});
+    
+    Theoph.draw();
+    subDiamonds.draw();
+    var AllAxisObjArr = [axis1, axis2, axis3, axis4, axis5, axis6, axis7, axis8, axis9, axis10]; eventTrigger(AllAxisObjArr);
+  </script>
+
+<script>
+</script>
+
+  <div id="footer">
+  <p id="copyright">&copy; 2014 - <a href="#">The RIGHT team</a></p>
+  <p id="dont-delete-this">E-mail : <a href="mailto:right-user@googlegroups.com">right-user@googlegroups.com</a></p>
+  </div>
+
+</body>
+</html>

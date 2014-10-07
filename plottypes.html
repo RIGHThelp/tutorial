@@ -55,37 +55,31 @@
 <td>Plot Type</td>
 <td>Function name in RIGHT</td>
 <td>Function name in ggplot</td>
-<td>Description</td>
 </tr>
 <tr>
 <td>Scatter plot</td>
 <td>RIGHT(plot(form, data, type="p"))</td>
 <td>RIGHT(print(ggplot(data, aes(form)) + geom_point()))</td>
-<td></td>
 </tr>
 <tr>
 <td>Bar plot</td>
 <td>RIGHT(hist(form, data))</td>
 <td>RIGHT(print(ggplot(data, aes(form)) + geom_bar()))</td>
-<td></td>
 </tr>
 <tr>
 <td>Box and Whisker plot</td>
 <td>RIGHT(boxplot(form, data))</td>
 <td>RIGHT(print(ggplot(data, aes(form)) + geom_boxplot()))</td>
-<td></td>
 </tr>
 <tr>
 <td>Line plot</td>
 <td>RIGHT(plot(form, data, type= "l"))</td>
 <td>RIGHT(print(ggplot(data, aes(form)) + geom_line()))</td>
-<td></td>
 </tr>
 <tr>
 <td>Pie plot</td>
 <td>RIGHT(pie(form, data))</td>
 <td>no support in ggplot2</td>
-<td></td>
 </tr>
 </tbody>
 </table>
