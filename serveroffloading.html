@@ -56,6 +56,30 @@
 </pre></div>
 
 <p>UNDER CONSTRUCTION</p>
+
+<h3>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h3>
+Typing this code in R
+<div class="highlight highlight-R"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span><span class="s">"shiny"</span><span class="p">,</span> lib.loc<span class="o">=</span><span class="s">"C:/Program Files/R/R-3.1.1/library"</span><span class="p">)</span>
+<span class="o">&gt;</span> subDiamonds <span class="o">&lt;-</span> diamonds<span class="p">[</span><span class="kp">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="kp">nrow</span><span class="p">(</span>diamonds<span class="p">),</span> <span class="m">100</span><span class="p">,</span> <span class="bp">T</span><span class="p">)</span> <span class="p">,]</span>
+<span class="o">&gt;</span> RIGHT<span class="p">({</span> loessArray1 <span class="o">&lt;-</span> runServer<span class="p">({</span>obj <span class="o">&lt;-</span> loess<span class="p">(</span>carat <span class="o">~</span> price<span class="p">,</span> data <span class="o">=</span> subDiamonds<span class="p">)</span>
+                                   xRange <span class="o">&lt;-</span> <span class="kp">range</span><span class="p">(</span>subDiamonds<span class="o">$</span>price<span class="p">)</span>
+                                   simArray <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>price <span class="o">=</span> <span class="kp">seq</span><span class="p">(</span>xRange<span class="p">[</span><span class="m">1</span><span class="p">],</span> xRange<span class="p">[</span><span class="m">2</span><span class="p">],</span> length.out <span class="o">=</span> <span class="m">132</span><span class="p">))</span>
+                                   simArray<span class="o">$</span>carat <span class="o">&lt;-</span> predict<span class="p">(</span>obj<span class="p">,</span> newdata <span class="o">=</span> simArray<span class="p">)</span>                        
+                                   <span class="kr">return</span><span class="p">(</span>simArray<span class="p">)})</span>
+         lmArray1 <span class="o">&lt;-</span> runServer<span class="p">({</span>obj <span class="o">&lt;-</span> lm<span class="p">(</span>carat <span class="o">~</span> price<span class="p">,</span> data <span class="o">=</span> subDiamonds<span class="p">)</span>
+                                xRange <span class="o">&lt;-</span> <span class="kp">range</span><span class="p">(</span>subDiamonds<span class="o">$</span>price<span class="p">)</span>
+                                simArray <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>price <span class="o">=</span> <span class="kp">seq</span><span class="p">(</span>xRange<span class="p">[</span><span class="m">1</span><span class="p">],</span> xRange<span class="p">[</span><span class="m">2</span><span class="p">],</span> length.out <span class="o">=</span> <span class="m">132</span><span class="p">))</span>
+                                simArray<span class="o">$</span>carat <span class="o">&lt;-</span> predict<span class="p">(</span>obj<span class="p">,</span> newdata <span class="o">=</span> simArray<span class="p">)</span>                        
+                                <span class="kr">return</span><span class="p">(</span>simArray<span class="p">)})</span>
+         plot<span class="p">(</span>carat<span class="o">~</span>price<span class="p">,</span> subDiamonds<span class="p">,</span> type<span class="o">=</span><span class="s">"p"</span><span class="p">)</span>
+         lines<span class="p">(</span>carat<span class="o">~</span>price<span class="p">,</span> loessArray1<span class="p">)</span>
+         lines<span class="p">(</span>carat<span class="o">~</span>price<span class="p">,</span> lmArray1<span class="p">)})</span>
+</pre></div>
+
+Let's see the result <a href="https://right.shinyapps.io/example_serveroffloading/">Click Here</a>!!
+
+
         </section>
 
         <aside id="sidebar">
