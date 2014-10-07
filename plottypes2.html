@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>R-Interactive-Graphics-via-HTml</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Tutorial</h1>
+        <h2>tutorial</h2>
+        <a href="https://github.com/righthelp/tutorial" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h2>
+<a name="types-of-graphs" class="anchor" href="#types-of-graphs"><span class="octicon octicon-link"></span></a>Types of graphs</h2>
+
+<p>There are five types of graph and four types of ggplot2 graph right now. More types will be updated.</p>
+
+<table>
+<tbody>
+<tr>
+<td>Plot Type</td>
+<td>Function name in RIGHT</td>
+<td>Function name in ggplot</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>Scatter plot</td>
+<td>RIGHT(plot(form, data, type="p"))</td>
+<td>RIGHT(print(ggplot(data, aes(form)) + geom_point()))</td>
+<td></td>
+</tr>
+<tr>
+<td>Bar plot</td>
+<td>RIGHT(hist(form, data))</td>
+<td>RIGHT(print(ggplot(data, aes(form)) + geom_bar()))</td>
+<td></td>
+</tr>
+<tr>
+<td>Box and Whisker plot</td>
+<td>RIGHT(boxplot(form, data))</td>
+<td>RIGHT(print(ggplot(data, aes(form)) + geom_boxplot()))</td>
+<td></td>
+</tr>
+<tr>
+<td>Line plot</td>
+<td>RIGHT(plot(form, data, type= "l"))</td>
+<td>RIGHT(print(ggplot(data, aes(form)) + geom_line()))</td>
+<td></td>
+</tr>
+<tr>
+<td>Pie plot</td>
+<td>RIGHT(pie(form, data))</td>
+<td>no support in ggplot2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<br>
+<p>Here is a summary of what types of interactivity each plot supports:
+LET'S SUMMARIZE WHAT TYPES OF INTERACTIVITY EACH PLOT TYPE SUPPORTS IN A TABLE.
+Read more about <a href="http://righthelp.github.io/tutorial/interactivity">types of supported interactivity</a> and <a href="http://righthelp.github.io/tutorial/options">supported plotting options</a>.</p>
+
+<h3>
+<a name="1-scatter-plot" class="anchor" href="#1-scatter-plot"><span class="octicon octicon-link"></span></a>1. Scatter plot</h3>
+<table>
+<tbody>
+<tr>
+<td>Scatter plot</td>
+<td>RIGHT(plot(form, data, type="p"))</td>
+<td>RIGHT(print(ggplot(data, aes(form)) + geom_point()))</td>
+</tr>
+</tbody>
+</table>
+<br>
+
+<ul>
+<li>
+<a href="http://en.wikipedia.org/wiki/Scatter_plot">Scatter plot</a>, display values for two variables for a set of data.</li>
+<li>Regression (linear, loess) is enabled. The calculation for a regression line is done by the server side with R. (Shiny library is used here)
+To draw basic scatter graph type:</li>
+</ul>
+<div class="highlight highlight-R"><pre><span class="o">&gt;</span> subDiamonds <span class="o">&lt;-</span> diamonds<span class="p">[</span><span class="kp">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="kp">nrow</span><span class="p">(</span>diamonds<span class="p">),</span> <span class="m">50</span><span class="p">,</span> <span class="bp">T</span><span class="p">)</span> <span class="p">,]</span>
+<span class="o">&gt;</span> RIGHT<span class="p">(</span>plot<span class="p">(</span>price <span class="o">~</span> carat<span class="p">,</span> subDiamonds<span class="p">,</span> type<span class="o">=</span><span class="s">"p"</span><span class="p">))</span>
+</pre></div>
+
+<p>or you can make same graph using ggplot2 or qplot API</p>
+
+<div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span><span class="kp">print</span><span class="p">(</span>ggplot<span class="p">(</span>subDiamonds<span class="p">,</span> aes<span class="p">(</span>carat<span class="p">,</span> price<span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()))</span>
+</pre></div>
+
+<p>If you want to use qplot function,</p>
+
+<div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span>qplot<span class="p">(</span>x<span class="o">=</span>carat<span class="p">,</span> y<span class="o">=</span>price<span class="p">,</span> data<span class="o">=</span>subDiamonds<span class="p">,</span> geom<span class="o">=</span><span class="s">"point"</span><span class="p">))</span>
+</pre></div>
+
+
+
+<h3>
+<a name="2-bar-plot" class="anchor" href="#2-bar-plot"><span class="octicon octicon-link"></span></a>2. Bar plot</h3>
+<table>
+<tbody>
+<tr>
+<td>Bar plot</td>
+<td>RIGHT(hist(form, data))</td>
+<td>RIGHT(print(ggplot(data, aes(form)) + geom_bar()))</td>
+</tr>
+</tbody>
+</table>
+<br>
+
+<ul>
+<li>
+<a href="http://en.wikipedia.org/wiki/Bar_chart">Bar plot</a>, rectangular bars with lengths proportional to the values.
+To draw basic bar graph type:</li>
+</ul><div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span>hist<span class="p">(</span>price<span class="p">,</span> diamonds<span class="p">))</span>
+</pre></div>
+
+<p>or</p>
+
+<div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span><span class="kp">print</span><span class="p">(</span>ggplot<span class="p">(</span>diamonds<span class="p">,</span> aes<span class="p">(</span>price<span class="p">,</span> fill <span class="o">=</span> price<span class="p">))</span> <span class="o">+</span> geom_bar<span class="p">()))</span>
+</pre></div>
+
+<p>If you want to use qplot function,</p>
+
+<div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span>qplot<span class="p">(</span>x<span class="o">=</span>price<span class="p">,</span> fill<span class="o">=</span>price<span class="p">,</span> data<span class="o">=</span>diamonds<span class="p">,</span> geom<span class="o">=</span><span class="s">"bar"</span><span class="p">))</span>
+</pre></div>
+
+<p><img src="http://thepotter.woobi.co.kr/img/bar_diamonds.PNG" alt=""></p>
+
+<h3>
+<a name="3-box-and-whisker-plot" class="anchor" href="#3-box-and-whisker-plot"><span class="octicon octicon-link"></span></a>3. Box and Whisker plot</h3>
+<table>
+<tbody>
+<tr>
+<td>Box and Whisker plot</td>
+<td>RIGHT(boxplot(form, data))</td>
+<td>RIGHT(print(ggplot(data, aes(form)) + geom_boxplot()))</td>
+</tr>
+</tbody>
+</table>
+<br>
+
+<ul>
+<li>
+<a href="http://en.wikipedia.org/wiki/Box_plot">Box and Whisker plot</a>, a convenient way of graphically depicting groups of numerical data through their quartiles.
+To draw basic box and whisker graph type:</li>
+</ul><div class="highlight highlight-R"><pre><span class="o">&gt;</span> subArray <span class="o">&lt;-</span> diamonds<span class="p">[</span><span class="kp">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="kp">nrow</span><span class="p">(</span>diamonds<span class="p">),</span> <span class="m">1000</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">),</span> <span class="p">]</span>
+<span class="o">&gt;</span> RIGHT<span class="p">(</span>boxplot<span class="p">(</span>price <span class="o">~</span> color<span class="p">,</span> subArray<span class="p">))</span>
+</pre></div>
+
+<p>or</p>
+
+<div class="highlight highlight-R"><pre><span class="o">&gt;</span> subArray <span class="o">&lt;-</span> diamonds<span class="p">[</span><span class="kp">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="kp">nrow</span><span class="p">(</span>diamonds<span class="p">),</span> <span class="m">1000</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">),</span> <span class="p">]</span>
+<span class="o">&gt;</span> RIGHT<span class="p">(</span><span class="kp">print</span><span class="p">(</span>ggplot<span class="p">(</span>subArray<span class="p">,</span> aes<span class="p">(</span>color<span class="p">,</span> price<span class="p">))</span> <span class="o">+</span> geom_boxplot<span class="p">()))</span>
+</pre></div>
+
+<p>If you want to use qplot function,</p>
+
+<div class="highlight highlight-R"><pre><span class="o">&gt;</span> subArray <span class="o">&lt;-</span> diamonds<span class="p">[</span><span class="kp">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="kp">nrow</span><span class="p">(</span>diamonds<span class="p">),</span> <span class="m">1000</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">),</span> <span class="p">]</span>
+<span class="o">&gt;</span> RIGHT<span class="p">(</span>qplot<span class="p">(</span>x<span class="o">=</span>color<span class="p">,</span> y<span class="o">=</span>price<span class="p">,</span> data<span class="o">=</span>subArray<span class="p">,</span> geom<span class="o">=</span><span class="s">"boxplot"</span><span class="p">))</span>
+</pre></div>
+
+<p><img src="http://thepotter.woobi.co.kr/img/box_diamonds.PNG" alt=""></p>
+
+<h3>
+<a name="4-line-plot" class="anchor" href="#4-line-plot"><span class="octicon octicon-link"></span></a>4. Line plot</h3>
+<table>
+<tbody>
+<tr>
+<td>Line plot</td>
+<td>RIGHT(plot(form, data, type= "l"))</td>
+<td>RIGHT(print(ggplot(data, aes(form)) + geom_line()))</td>
+</tr>
+</tbody>
+</table>
+<br>
+
+<ul>
+<li>
+<a href="http://en.wikipedia.org/wiki/Line_chart">Line plot</a>, displays information as a series of data points connected by straight line segments.
+To draw basic line graph type:</li>
+</ul><div class="highlight highlight-R"><pre><span class="o">&gt;</span> subArray <span class="o">&lt;-</span> diamonds<span class="p">[</span><span class="kp">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="kp">nrow</span><span class="p">(</span>diamonds<span class="p">),</span> <span class="m">1000</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">),</span> <span class="p">]</span>
+<span class="o">&gt;</span> RIGHT<span class="p">(</span>plot<span class="p">(</span>price <span class="o">~</span> carat<span class="p">,</span> subArray<span class="p">,</span> type<span class="o">=</span> <span class="s">"l"</span><span class="p">))</span>
+</pre></div>
+
+<p>or</p>
+
+<div class="highlight highlight-R"><pre><span class="o">&gt;</span> subArray <span class="o">&lt;-</span> diamonds<span class="p">[</span><span class="kp">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="kp">nrow</span><span class="p">(</span>diamonds<span class="p">),</span> <span class="m">1000</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">),</span> <span class="p">]</span>
+<span class="o">&gt;</span> RIGHT<span class="p">(</span><span class="kp">print</span><span class="p">(</span>ggplot<span class="p">(</span>subArray<span class="p">,</span> aes<span class="p">(</span>carat<span class="p">,</span> price<span class="p">))</span> <span class="o">+</span> geom_line<span class="p">()))</span>
+</pre></div>
+
+<p>If you want to use qplot function,</p>
+
+<div class="highlight highlight-R"><pre><span class="o">&gt;</span> subArray <span class="o">&lt;-</span> diamonds<span class="p">[</span><span class="kp">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="kp">nrow</span><span class="p">(</span>diamonds<span class="p">),</span> <span class="m">1000</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">),</span> <span class="p">]</span>
+<span class="o">&gt;</span> RIGHT<span class="p">(</span>qplot<span class="p">(</span>x<span class="o">=</span>carat<span class="p">,</span> y<span class="o">=</span>price<span class="p">,</span> data<span class="o">=</span>subArray<span class="p">,</span> geom<span class="o">=</span><span class="s">"line"</span><span class="p">))</span>
+</pre></div>
+
+<p><img src="http://thepotter.woobi.co.kr/img/line_diamonds.PNG" alt=""></p>
+
+<h3>
+<a name="5-pie-chart" class="anchor" href="#5-pie-chart"><span class="octicon octicon-link"></span></a>5. Pie chart</h3>
+<table>
+<tbody>
+<tr>
+<td>Pie plot</td>
+<td>RIGHT(pie(form, data))</td>
+<td>no support in ggplot2</td>
+</tr>
+</tbody>
+</table>
+<br>
+
+<ul>
+<li>
+<a href="http://en.wikipedia.org/wiki/Pie_chart">Pie chart</a>, circular chart divided into sectors, illustrating numerical proportion.
+To draw basic pie graph type:</li>
+</ul><div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span>pie<span class="p">(</span>color<span class="p">,</span> diamonds<span class="p">))</span>
+</pre></div>
+
+<p>There is no support using ggplot2 API to draw pie chart
+<img src="http://thepotter.woobi.co.kr/img/pie_diamonds.PNG" alt=""></p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/righthelp/tutorial/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/righthelp/tutorial/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/righthelp/tutorial"></a> is maintained by <a href="https://github.com/righthelp">RIGHT-help</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
