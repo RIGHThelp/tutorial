@@ -8,15 +8,40 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="right2.css"/>
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <title>R-Interactive-Graphics-via-HTml</title>
+    <script src="http://righthelp.github.io/tutorial/kinetic-v5.0.1.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/common.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/structure.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/axis.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/color.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/callback.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/node_event.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/menu.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/array.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/dot.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/bar.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/box.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/line.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/pie.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/search.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/table.js" type="text/javascript"></script>
+    <script src="http://righthelp.github.io/tutorial/data_plottypes.js" type="text/javascript"></script>
   </head>
 
   <body>
+
+<script>
+    var subDiamonds1 = createMainStructureE(subDiamonds);
+    var subDiamonds2 = createMainStructureE(subDiamonds);
+    var subDiamonds3 = createMainStructureE(subDiamonds);
+</script>
+
     <header>
       <div class="inner">
         <h1>Tutorial</h1>
@@ -34,65 +59,68 @@
 <ul>
 <li>RIGHT supports a variety of interactivities.</li>
 <li>Such as Tooltip Box, Simultaneous selection, Hiding/Reset, Searching, Table, Right-click Menu, and Regression.</li>
-</ul><h3>
+</ul>
+
+<h3>
 <a name="1-tooltip-box" class="anchor" href="#1-tooltip-box"><span class="octicon octicon-link"></span></a>1. Tooltip Box</h3>
 
 <p>A mouse hover on a node triggers tooltip box which includes all information about the node.
-<img src="http://thepotter.woobi.co.kr/img/tooltip.PNG" alt=""></p>
 
 <h3>
 <a name="2-simultaneous-selection" class="anchor" href="#2-simultaneous-selection"><span class="octicon octicon-link"></span></a>2. Simultaneous Selection</h3>
-
 <p>Each data point on different graphs is connected so that they will be selected at the same time. Multiple selection with Ctrl/Shift key and box selection is also possible.
-<img src="http://thepotter.woobi.co.kr/img/simul_selection.PNG" alt=""></p>
 
 <h3>
 <a name="3-hidingreset" class="anchor" href="#3-hidingreset"><span class="octicon octicon-link"></span></a>3. Hiding/Reset</h3>
-
 <p>Selected nodes can be hidden. Also, hidden nodes can be reset.</p>
-
 <ul>
-<li>Before hiding.
-<img src="http://thepotter.woobi.co.kr/img/hide_before.PNG" alt="">
-</li><br>
-<li>Select the nodes you want to hide and use right-click menu to hide.
-<img src="http://thepotter.woobi.co.kr/img/hide_mid.PNG" alt="">
-</li><br>
-<li>After click hide menu, it will hide the selected nodes.
-<img src="http://thepotter.woobi.co.kr/img/hide_after.PNG" alt="">
-</li><br>
-<li>If you want to restore the nodes, use right-click menu again.
-<img src="http://thepotter.woobi.co.kr/img/reset_before.PNG" alt="">
-</li><br>
-<li>After click reset menu, it will reset the hidden nodes.
-<img src="http://thepotter.woobi.co.kr/img/reset_after.PNG" alt="">
-</li>
-</ul><h3>
+<li>Before hiding.Select the nodes you want to hide and use right-click menu to hide.</li>
+<li>After click hide menu, it will hide the selected nodes.</li>
+<li>If you want to restore the nodes, use right-click menu again.</li>
+<li>After click reset menu, it will reset the hidden nodes.</li>
+</ul>
+Here is an example. Let's try!!
+<div id="content1" class="right-output">
+<div id="container1" oncontextmenu="return false;"></div></div>
+
+<h3>
 <a name="4-searching" class="anchor" href="#4-searching"><span class="octicon octicon-link"></span></a>4. Searching</h3>
 
 <p>Nodes can be searched and selected with boolean statements using search box.</p>
 
 <ul>
-<li>Auto-complete is enabled for users' convenience.
-<img src="http://thepotter.woobi.co.kr/img/search01.PNG" alt="">
-</li><br>
-<li>Tye boolean statements, and it will select the nodes which satisfy the condition.
-<img src="http://thepotter.woobi.co.kr/img/search02.PNG" alt="">
-</li><br>
-<li>Recent boolean statements are saved in ans?, so you can re-use ans? for further search.
-<img src="http://thepotter.woobi.co.kr/img/search03.PNG" alt="">
-</li>
-</ul><h3>
+<li>Auto-complete is enabled for users' convenience.</li>
+<li>Tye boolean statements, and it will select the nodes which satisfy the condition.</li>
+<li>Recent boolean statements are saved in ans?, so you can re-use ans? for further search.</li>
+</ul>
+Here is an example. Let's try!!
+<div id="content2" class="right-output">
+<div id="container2" oncontextmenu="return false;"></div></div>
+<div id="content">
+  <script>
+  makeSearchButton("searchBox1", subDiamonds2);
+  </script>
+</div>
+<br>
+<br>
+
+
+<h3>
 <a name="5-table" class="anchor" href="#5-table"><span class="octicon octicon-link"></span></a>5. Table</h3>
 
-<p>Table shows all information about selected nodes.
-<img src="http://thepotter.woobi.co.kr/img/table.PNG" alt=""></p>
+<p>Table shows all information about selected nodes.</p>
+Here is an example. Let's try!!
+<div id="content3" class="right-output">
+<div id="container3" oncontextmenu="return false;"></div></div>
+  <script>
+  makeTable("table1", subDiamonds3, 200);  
+  </script>
+<br><br><br><br><br><br><br><br><br><br><br>
 
 <h3>
 <a name="6-right-click-menu" class="anchor" href="#6-right-click-menu"><span class="octicon octicon-link"></span></a>6. Right-click Menu</h3>
 
-<p>When right click occurs, it will show context menu.
-<img src="http://thepotter.woobi.co.kr/img/rightmenu.PNG" alt=""></p>
+<p>When right click occurs, it will show context menu.</p>
 
 <h3>
 <a name="7-regression" class="anchor" href="#7-regression"><span class="octicon octicon-link"></span></a>7. Regression</h3>
@@ -119,7 +147,19 @@
 </pre></div>
 <li><a href="http://righthelp.github.io/tutorial/example"> Result page, Click Here!!!</a></li>
 
+<script>
+    var axis1 = new Axis(1, subDiamonds1, 'carat', 'price', {legend: 'color'});
+    var point1 = new Dot(axis1, subDiamonds1, 'carat', 'price', {});
 
+   
+    var axis2 = new Axis(2, subDiamonds2, 'carat', 'price', {legend: 'color'});
+    var point2 = new Dot(axis2, subDiamonds2, 'carat', 'price', {});
+    
+    var axis3 = new Axis(3, subDiamonds3, 'carat', 'price', {legend: 'color'});
+    var point3 = new Dot(axis3, subDiamonds3, 'carat', 'price', {});
+    subDiamonds1.draw(); subDiamonds2.draw(); subDiamonds3.draw();
+    var AllAxisObjArr = [axis1, axis2, axis3]; eventTrigger(AllAxisObjArr);
+</script>
 
         </section>
 
