@@ -50,7 +50,6 @@
 <p>There are five types of graph and four types of ggplot2 graph right now. More types will be updated.</p>
 
 <table>
-<tbody>
 <tr>
 <td>Plot Type</td>
 <td>Function name in RIGHT</td>
@@ -58,30 +57,29 @@
 </tr>
 <tr>
 <td>Scatter plot</td>
-<td>RIGHT(plot(form, data, type="p"))</td>
-<td>RIGHT(print(ggplot(data, aes(form)) + geom_point()))</td>
+<td><div style="text-align:left">&nbsp; plot(---, ---, type="p"))</div></td>
+<td><div style="text-align:left">&nbsp; (---, aes(---)) + geom_point()</div></td>
 </tr>
 <tr>
 <td>Bar plot</td>
-<td>RIGHT(hist(form, data))</td>
-<td>RIGHT(print(ggplot(data, aes(form)) + geom_bar()))</td>
+<td><div style="text-align:left">&nbsp; hist(---, ---)</div></td>
+<td><div style="text-align:left">&nbsp; (---, aes(---)) + geom_bar()</div></td>
 </tr>
 <tr>
 <td>Box and Whisker plot</td>
-<td>RIGHT(boxplot(form, data))</td>
-<td>RIGHT(print(ggplot(data, aes(form)) + geom_boxplot()))</td>
+<td><div style="text-align:left">&nbsp; boxplot(---, ---)</div></td>
+<td><div style="text-align:left">&nbsp; (---, aes(---)) + geom_boxplot()</div></td>
 </tr>
 <tr>
 <td>Line plot</td>
-<td>RIGHT(plot(form, data, type= "l"))</td>
-<td>RIGHT(print(ggplot(data, aes(form)) + geom_line()))</td>
+<td><div style="text-align:left">&nbsp; plot(---, ---, type= "l")</div></td>
+<td><div style="text-align:left">&nbsp; (---, aes(---)) + geom_line()</div></td>
 </tr>
 <tr>
 <td>Pie plot</td>
-<td>RIGHT(pie(form, data))</td>
-<td>no support in ggplot2</td>
+<td><div style="text-align:left">&nbsp; pie(---, ---)</div></td>
+<td><div style="text-align:left">&nbsp; no support in ggplot2</div></td>
 </tr>
-</tbody>
 </table>
 <br>
 <p>Here is a summary of what types of interactivity each plot supports:
@@ -93,9 +91,8 @@ Read more about <a href="http://righthelp.github.io/tutorial/interactivity">type
 <table>
 <tbody>
 <tr>
-<td>Scatter plot</td>
-<td>RIGHT(plot(form, data, type="p"))</td>
-<td>RIGHT(print(ggplot(data, aes(form)) + geom_point()))</td>
+<td>RIGHT(plot(form, data, type="p", col))</td>
+<td>RIGHT(print(ggplot(data, aes(form, colour)) + geom_point()))</td>
 </tr>
 </tbody>
 </table>
@@ -108,17 +105,17 @@ Read more about <a href="http://righthelp.github.io/tutorial/interactivity">type
 To draw basic scatter graph type:</li>
 </ul>
 <div class="highlight highlight-R"><pre><span class="o">&gt;</span> subDiamonds <span class="o">&lt;-</span> diamonds<span class="p">[</span><span class="kp">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="kp">nrow</span><span class="p">(</span>diamonds<span class="p">),</span> <span class="m">50</span><span class="p">,</span> <span class="bp">T</span><span class="p">)</span> <span class="p">,]</span>
-<span class="o">&gt;</span> RIGHT<span class="p">(</span>plot<span class="p">(</span>price <span class="o">~</span> carat<span class="p">,</span> subDiamonds<span class="p">,</span> type<span class="o">=</span><span class="s">"p"</span><span class="p">))</span>
+<span class="o">&gt;</span> RIGHT<span class="p">(</span>plot<span class="p">(</span>price <span class="o">~</span> carat<span class="p">,</span> subDiamonds<span class="p">,</span> type<span class="o">=</span><span class="s">"p"</span><span class="p">, col=color))</span>
 </pre></div>
 
 <p>or you can make same graph using ggplot2 or qplot API</p>
 
-<div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span><span class="kp">print</span><span class="p">(</span>ggplot<span class="p">(</span>subDiamonds<span class="p">,</span> aes<span class="p">(</span>carat<span class="p">,</span> price<span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()))</span>
+<div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span><span class="kp">print</span><span class="p">(</span>ggplot<span class="p">(</span>subDiamonds<span class="p">,</span> aes<span class="p">(</span>carat<span class="p">,</span> price, colour=color<span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()))</span>
 </pre></div>
 
 <p>If you want to use qplot function,</p>
 
-<div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span>qplot<span class="p">(</span>x<span class="o">=</span>carat<span class="p">,</span> y<span class="o">=</span>price<span class="p">,</span> data<span class="o">=</span>subDiamonds<span class="p">,</span> geom<span class="o">=</span><span class="s">"point"</span><span class="p">))</span>
+<div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span>qplot<span class="p">(</span>x<span class="o">=</span>carat<span class="p">,</span> y<span class="o">=</span>price<span class="p">,</span> data<span class="o">=</span>subDiamonds<span class="p">,</span> geom<span class="o">=</span><span class="s">"point"</span><span class="p">, colour=color))</span>
 </pre></div>
 
 <div id="content1" class="right-output">
@@ -129,9 +126,8 @@ To draw basic scatter graph type:</li>
 <table>
 <tbody>
 <tr>
-<td>Bar plot</td>
-<td>RIGHT(hist(form, data))</td>
-<td>RIGHT(print(ggplot(data, aes(form)) + geom_bar()))</td>
+<td>RIGHT(hist(form, data, col))</td>
+<td>RIGHT(print(ggplot(data, aes(form, fill)) + geom_bar()))</td>
 </tr>
 </tbody>
 </table>
@@ -141,17 +137,17 @@ To draw basic scatter graph type:</li>
 <li>
 <a href="http://en.wikipedia.org/wiki/Bar_chart">Bar plot</a>, rectangular bars with lengths proportional to the values.
 To draw basic bar graph type:</li>
-</ul><div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span>hist<span class="p">(</span>price<span class="p">,</span> subDiamonds<span class="p">))</span>
+</ul><div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span>hist<span class="p">(</span>price<span class="p">,</span> subDiamonds<span class="p">, col=color))</span>
 </pre></div>
 
 <p>or</p>
 
-<div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span><span class="kp">print</span><span class="p">(</span>ggplot<span class="p">(</span>subDiamonds<span class="p">,</span> aes<span class="p">(</span>price<span class="p">,</span> fill <span class="o">=</span> price<span class="p">))</span> <span class="o">+</span> geom_bar<span class="p">()))</span>
+<div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span><span class="kp">print</span><span class="p">(</span>ggplot<span class="p">(</span>subDiamonds<span class="p">,</span> aes<span class="p">(</span>price<span class="p">,</span> fill <span class="o">=</span> color<span class="p">))</span> <span class="o">+</span> geom_bar<span class="p">()))</span>
 </pre></div>
 
 <p>If you want to use qplot function,</p>
 
-<div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span>qplot<span class="p">(</span>x<span class="o">=</span>price<span class="p">,</span> fill<span class="o">=</span>price<span class="p">,</span> data<span class="o">=</span>subDiamonds<span class="p">,</span> geom<span class="o">=</span><span class="s">"bar"</span><span class="p">))</span>
+<div class="highlight highlight-R"><pre><span class="o">&gt;</span> RIGHT<span class="p">(</span>qplot<span class="p">(</span>x<span class="o">=</span>price<span class="p">,</span> fill<span class="o">=</span>color<span class="p">,</span> data<span class="o">=</span>subDiamonds<span class="p">,</span> geom<span class="o">=</span><span class="s">"bar"</span><span class="p">))</span>
 </pre></div>
 
 <div id="content2" class="right-output">
@@ -162,7 +158,6 @@ To draw basic bar graph type:</li>
 <table>
 <tbody>
 <tr>
-<td>Box and Whisker plot</td>
 <td>RIGHT(boxplot(form, data))</td>
 <td>RIGHT(print(ggplot(data, aes(form)) + geom_boxplot()))</td>
 </tr>
@@ -198,7 +193,6 @@ To draw basic box and whisker graph type:</li>
 <table>
 <tbody>
 <tr>
-<td>Line plot</td>
 <td>RIGHT(plot(form, data, type= "l"))</td>
 <td>RIGHT(print(ggplot(data, aes(form)) + geom_line()))</td>
 </tr>
@@ -234,7 +228,6 @@ To draw basic line graph type:</li>
 <table>
 <tbody>
 <tr>
-<td>Pie plot</td>
 <td>RIGHT(pie(form, data))</td>
 <td>no support in ggplot2</td>
 </tr>
@@ -255,22 +248,32 @@ To draw basic pie graph type:</li>
 <div id="container5" oncontextmenu="return false;"></div></div>
 
 <script>
-    var subDiamonds = createMainStructureE(subDiamonds);    
-    var subArray = createMainStructureE(subArray);    var axis1 = new Axis(1, subDiamonds, 'carat', 'price', {});
-    var point1 = new Dot(axis1, subDiamonds, 'carat', 'price', {});
-    var histObj1 = new ddply(subDiamonds, ['price'], {});
-    var axis2 = new Axis(2, histObj1, 'price', 'frequency', {});
+    var subDiamonds1 = createMainStructureE(subDiamonds);
+    var subDiamonds2 = createMainStructureE(subDiamonds);
+    var subDiamonds4 = createMainStructureE(subDiamonds);
+    var subDiamonds5 = createMainStructureE(subDiamonds);  
+    var subArray = createMainStructureE(subArray);    
+    
+    var axis1 = new Axis(1, subDiamonds1, 'carat', 'price', {legend: 'color'});
+    var point1 = new Dot(axis1, subDiamonds1, 'carat', 'price', {});
+
+    var histObj1 = new ddply(subDiamonds2, ['price', 'color'], {});
+    var axis2 = new Axis(2, histObj1, 'price', 'frequency', {legend: 'color'});
     var hist1 = new Bar(axis2, histObj1, 'price', 'frequency', {});
+
     var boxObj1 = new MakeBoxObj(subArray, ['color'], ['price'], {});
     var axis3 = new Axis(3, boxObj1, 'color', 'price', {});
     var box1 = new Box(axis3, boxObj1, {});
-    var axis4 = new Axis(4, subDiamonds, 'carat', 'price', {});
-    var lineObj1 = new MakeLineObj(subDiamonds, 'carat', 'price', {});
+
+    var axis4 = new Axis(4, subDiamonds4, 'carat', 'price', {});
+    var lineObj1 = new MakeLineObj(subDiamonds4, 'carat', 'price', {});
     var line1 = new Line(axis4, lineObj1, 'x1', 'x2', 'y1', 'y2', {});
-    var pieObj1 = new ddply(subDiamonds, ['color'], {});
+
+    var pieObj1 = new ddply(subDiamonds5, ['color'], {});
     var axis5 = new Axis(5, pieObj1, 'color', 'frequency', {legend: 'color'});
     var pie1 = new Pie(axis5, pieObj1, 'color', 'frequency', {});
-    subArray.draw();    subDiamonds.draw();
+    subArray.draw();    
+    subDiamonds1.draw(); subDiamonds2.draw(); subDiamonds4.draw(); subDiamonds5.draw();
     var AllAxisObjArr = [axis1, axis2, axis3, axis4, axis5]; eventTrigger(AllAxisObjArr);
   </script>
         </section>
